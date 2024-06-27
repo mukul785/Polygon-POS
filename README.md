@@ -1,4 +1,4 @@
-# ERC20 Goerli to Mumbai Bridge Using fxPortal
+# ERC721 NFT bridge with Sepolia and Amoy Testnet Using fxPortal
 This project demonstrates how to use the fxPortal contracts to transfer ERC20 tokens from Goerli to Mumbai.
 
 ### Steps for Bridging
