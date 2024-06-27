@@ -13,29 +13,28 @@ contract MyNFT is ERC721, Ownable {
         tokenCounter = 0;
     }
 
-    function mintNFT(string memory tokenURI, string memory prompt) public onlyOwner {
+    function mintNFT(string memory nftURL, string memory prompt) public onlyOwner {
         uint256 newItemId = tokenCounter;
         _safeMint(owner(), newItemId);
-        _setTokenURI(newItemId, tokenURI);
+        _tokenURIs[tokenId] = nftURL;
         _setPrompt(newItemId, prompt);
         tokenCounter += 1;
     }
-    function _setTokenURI(uint256 tokenId, string memory tokenURI) internal {
-        require(_exists(tokenId), "ERC721Metadata: URI set of nonexistent token");
-        _tokenURIs[tokenId] = tokenURI;
+    function _setTokenURI(uint256 tokenId, string memory nftURL) internal {
+        require(tokenId <= tokenCounter, "ERC721Metadata: URI set of nonexistent token");
+        _tokenURIs[tokenId] = nftURL;
     }
     function _setPrompt(uint256 tokenId, string memory prompt) internal {
-        require(_exists(tokenId), "Prompt set of nonexistent token");
+        require(tokenId <= tokenCounter, "Prompt set of nonexistent token");
         _prompts[tokenId] = prompt;
     }
 
-
     function tokenURI(uint256 tokenId) public view override returns (string memory) {
-        require(_exists(tokenId), "ERC721Metadata: URI query for nonexistent token");
+        require(tokenId <= tokenCounter, "ERC721Metadata: URI query for nonexistent token");
         return _tokenURIs[tokenId];
     }
     function promptDescription(uint256 tokenId) public view returns (string memory) {
-        require(_exists(tokenId), "Prompt query for nonexistent token");
+        require(tokenId <= tokenCounter, "Prompt query for nonexistent token");
         return _prompts[tokenId];
     }
 }

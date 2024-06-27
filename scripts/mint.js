@@ -1,8 +1,11 @@
-require("dotenv").config();
+const tokenContractJSON = require("../artifacts/contracts/MyNFT.sol/MyNFT.json");
+require('dotenv').config()
+
+const tokenAddress = "";
+const tokenABI = tokenContractJSON.abi;
+const walletAddress = "0xd8B5318B4BD5a706118b35819ED16759B7729941";
 
 async function main() {
-  const [deployer] = await ethers.getSigners();
-  const nft = await ethers.getContractAt("MyNFT", "SEPOLIA_CONTRACT_ADDRESS");
 
   const tokenURIs = [
     "ipfs://QmYuHLH4iHDsSUDBBijyLtD6WiXAhS6CkprVfmPbzYKKCZ",
@@ -25,10 +28,7 @@ async function main() {
     console.log(`Minted NFT with ID ${i} to owner with prompt: ${prompts[i]}`);
   }
 }
-
-main()
-  .then(() => process.exit(0))
-  .catch((error) => {
-    console.error(error);
-    process.exit(1);
-  });
+main().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});

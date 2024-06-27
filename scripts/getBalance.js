@@ -9,7 +9,7 @@ const hre = require("hardhat");
 async function main() {
   const [deployer] = await hre.ethers.getSigners();
 
-  const nftContract = await hre.ethers.getContractAt("MyNFT", "contractAddress");
+  const nftContract = await hre.ethers.getContractAt("MyNFT", "0xd8B5318B4BD5a706118b35819ED16759B7729941");
 
   const balance = await nftContract.balanceOf(deployer.address);
   console.log(`Balance of NFTs on Sepolia for address ${deployer.address}: ${balance}`);
