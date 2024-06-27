@@ -1,23 +1,17 @@
-// We require the Hardhat Runtime Environment explicitly here. This is optional
-// but useful for running the script in a standalone fashion through `node <script>`.
-//
-// You can also run a script with `npx hardhat run <script>`. If you do that, Hardhat
-// will compile your contracts, add the Hardhat Runtime Environment's members to the
-// global scope, and execute the script.
 const hre = require("hardhat");
+const tokenContractJSON = require("../artifacts/contracts/MyNFT.sol/MyNFT.json");
+
+const tokenAddress = "0x26D2ac0b732d40C9499Be9a209e5a11f6d49B47b"; 
+const tokenABI = tokenContractJSON.abi;
+const walletAddress = "0xd8B5318B4BD5a706118b35819ED16759B7729941";
 
 async function main() {
-  const [deployer] = await hre.ethers.getSigners();
 
-  const nftContract = await hre.ethers.getContractAt("MyNFT", "0xd8B5318B4BD5a706118b35819ED16759B7729941");
-
-  const balance = await nftContract.balanceOf(deployer.address);
-  console.log(`Balance of NFTs on Sepolia for address ${deployer.address}: ${balance}`);
-}
-
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+    const token = await hre.ethers.getContractAt(tokenABI, tokenAddress);
+    const balance = await token.balanceOf(walletAddress);
+    console.log(`You now have: ${balance} NFTs`);
+  }
+  main().catch((error) => {
+    console.error(error);
+    process.exitCode = 1;
+  });

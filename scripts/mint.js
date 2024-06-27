@@ -1,12 +1,12 @@
 const tokenContractJSON = require("../artifacts/contracts/MyNFT.sol/MyNFT.json");
 require('dotenv').config()
 
-const tokenAddress = "";
+const tokenAddress = "0x22c155174cd7aAa30A628a8fF2950eDC3bFeaE67";
 const tokenABI = tokenContractJSON.abi;
 const walletAddress = "0xd8B5318B4BD5a706118b35819ED16759B7729941";
 
 async function main() {
-
+  const nft = await ethers.getContractAt("MyNFT", "0x22c155174cd7aAa30A628a8fF2950eDC3bFeaE67");
   const tokenURIs = [
     "ipfs://QmYuHLH4iHDsSUDBBijyLtD6WiXAhS6CkprVfmPbzYKKCZ",
     "ipfs://QmPjYHrzoqdwSSEyv93kzCttzHAtLFCM4yFdiguKbdoKPQ",
