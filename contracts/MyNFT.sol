@@ -9,8 +9,6 @@ contract MyNFT is ERC721, Ownable {
     mapping(uint256 => string) private _tokenURIs;
     mapping(uint256 => string) private _prompts;
 
-    event NFTMinted(uint256 indexed tokenId, string tokenURI, string prompt);
-
     constructor() ERC721("MyNFT", "MFT") {
         tokenCounter = 0;
     }
@@ -21,7 +19,6 @@ contract MyNFT is ERC721, Ownable {
         _tokenURIs[newItemId] = nftURL;
         _prompts[newItemId] = prompt;
         tokenCounter += 1;
-        emit NFTMinted(newItemId, nftURL, prompt);
     }
     
 
