@@ -16,11 +16,10 @@ contract MyNFT is ERC721, Ownable {
     function mintNFT(string memory nftURL, string memory prompt) public onlyOwner {
         uint256 newItemId = tokenCounter;
         _safeMint(owner(), newItemId);
-        _tokenURIs[newItemId] = nftURL;
+        _tokenURIs[newItemId] = nftURL; 
         _prompts[newItemId] = prompt;
         tokenCounter += 1;
     }
-    
 
     function tokenURI(uint256 tokenId) public view override returns (string memory) {
         require(tokenId <= tokenCounter, "ERC721Metadata: URI query for nonexistent token");
