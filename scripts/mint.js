@@ -1,4 +1,4 @@
-const tokenContractJSON = require("../artifacts/contracts/MyNFT.sol/MyNFT.json");
+const tokenContractJSON = require("../../artifacts/contracts/MyNFT.sol/MyNFT.json");
 require('dotenv').config()
 
 const tokenAddress = "0x22c155174cd7aAa30A628a8fF2950eDC3bFeaE67"; //deployed address here

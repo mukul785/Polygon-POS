@@ -36,5 +36,11 @@ module.exports = {
     },
     stats: {
         children: true
-    }
+    },
+    ignoreWarnings: [
+        {
+            module: /ethers/,
+            message: /BrowserProvider/,
+        },
+    ]
 };

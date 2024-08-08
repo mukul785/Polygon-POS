@@ -1,5 +1,5 @@
 const hre = require("hardhat");
-const tokenContractJSON = require("../artifacts/contracts/MyNFT.sol/MyNFT.json");
+const tokenContractJSON = require("../../artifacts/contracts/MyNFT.sol/MyNFT.json");
 
 const tokenAddress = "0x26D2ac0b732d40C9499Be9a209e5a11f6d49B47b"; 
 const tokenABI = tokenContractJSON.abi;

@@ -4,16 +4,14 @@ import { ethers } from 'ethers';
 import atm_abi from "../artifacts/contracts/MyNFT.sol/MyNFT.json";
 import './ConnectWallet.css';
 
-
 const ConnectWallet = () => {
     const [ethWallet, setEthWallet] = useState(undefined);
     const [account, setAccount] = useState(undefined);
-    const [atm, setATM] = useState(undefined);
+    // const [atm, setATM] = useState(undefined);
     const [balance, setBalance] = useState(undefined);
     const buttonRef = useRef(null);
-
-    const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
-    const atmABI = atm_abi.abi;
+    // const [contractAddress, setContractAddress] = useState(undefined);
+    // const atmABI = atm_abi.abi;
 
     const getWallet = async () => {
         if (window.ethereum) {
@@ -46,15 +44,44 @@ const ConnectWallet = () => {
         handleAccount(accounts);
 
         // once wallet is set we can get a reference to our deployed contract
-        getATMContract();
+        // getATMContract();
     };
 
-    const getATMContract = () => {
-        const provider = new ethers.BrowserProvider(ethWallet);
-        const signer = provider.getSigner();
-        const atmContract = new ethers.Contract(contractAddress, atmABI, signer);
+    // const getATMContract = () => {
+        // const provider = new ethers.BrowserProvider(ethWallet);
+        // const signer = provider.getSigner();
+        // const atmContract = new ethers.Contract(contractAddress, atmABI, signer);
+        // setATM(atmContract);
+    // }
 
-        setATM(atmContract);
+    const deployContract = async () => {
+        if (!window.ethereum) {
+            alert('MetaMask wallet is required to deploy the contract');
+            return;
+        }
+    
+        try {
+            const network = await window.ethereum.request({ method: 'net_version' });
+            if (network !== '11155111') {
+                alert('Please switch to the Sepolia network in MetaMask');
+                return;
+            }
+            await window.ethereum.request({ method: 'eth_requestAccounts' });
+    
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            const signer = provider.getSigner();
+            const factory = new ethers.ContractFactory(atm_abi.abi, atm_abi.bytecode, signer);
+
+            const contract = await factory.deploy();
+            await contract.deployed();
+    
+            console.log('Contract deployed at:', contract.address);
+            alert('Contract deployed at: ' + contract.address);
+            return contract.address;
+        } catch (error) {
+            console.error('Error deploying contract:', error);
+            alert('Failed to deploy contract. See console for details.');
+        }
     }
 
     const handleMouseMove = (event) => {
@@ -94,21 +121,11 @@ const ConnectWallet = () => {
         return (
             <div className="acc_folio">
                 <div className="acc_details">
-                    <p><b>Your Account: <div className="wallet_address">{account}</div></b></p>
+                    <b>Your Account: <div className="wallet_address">{account}</div></b>
                     <p><b>Your Balance: {balance} ETH</b></p>
                 </div>
                 <div className="transactions">
-                    <button className="tr_child" ><b>Deposit</b></button>
-                    <button className="tr_child" ><b>Withdraw</b></button>
-                    <button className="tr_child" ><b>Transfer</b></button>
-                    <button className="tr_child" ><b>Freeze</b></button>
-                    <button className="tr_child" ><b>Unfreeze</b></button>
-                    <button className="tr_child"><b>Coming soon!!!</b></button>
-                </div>
-                <div className="loan">
-                    <button className="loan_child"><b>Request Loan</b></button>
-                    <button className="loan_child"><b>Approve Loan</b></button>
-                    <button className="loan_child"><b>Repay Loan</b></button>
+                    <button className="tr_child" onClick={deployContract}><b>Deploy</b></button>
                 </div>
             </div>
         )
