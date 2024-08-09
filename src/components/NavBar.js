@@ -1,31 +1,31 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-// import logo from '../assets/nft-high-resolution-logo-transparent.png';
-import './NavBar.css';
+import logo from '../assets/nft-logo.png';
+import './navbar.css';
+import '../index.css';
 
-const Navbar = (props) => {
+const Navbar = ({account}) => {
     return (
         <header className="navbar-container">
             <header data-thq="thq-navbar" className="navbar-navbar-interactive">
                 <img
-                    alt={props.logoAlt}
-                    src={props.logoSrc}
+                    alt='NFT Bridge Logo'
+                    src={logo}
                     className="navbar-image1"
                 />
                 <div data-thq="thq-navbar-nav" className="navbar-desktop-menu">
                     <nav className="navbar-links">
-                        <span className="thq-link thq-body-small">{props.link1}</span>
-                        <span className="thq-link thq-body-small">{props.link2}</span>
-                        <span className="thq-link thq-body-small">{props.link3}</span>
-                        <span className="thq-link thq-body-small">{props.link4}</span>
-                        <span className="thq-link thq-body-small">{props.link5}</span>
+                        {/* <span className="thq-link thq-body-small"><Link to="/connect-wallet">Home</Link></span> */}
+                        {/* <span className="thq-link thq-body-small">Deploy</span> */}
+                        {/* <span className="thq-link thq-body-small">Mint</span> */}
+                        {/* <span className="thq-link thq-body-small">Approve</span> */}
+                        {/* <span className="thq-link thq-body-small">Collection</span> */}
                     </nav>
                     <div className="navbar-buttons">
                         <button className="navbar-action1 thq-button-animated thq-button-filled">
                             <span className="thq-body-small">Link Wallet</span>
                         </button>
                         <button className="navbar-action2 thq-button-outline thq-button-animated">
-                            <span className="thq-body-small">Disconnect Wallet</span>
+                            <span className="thq-body-small">{account}</span>
                         </button>
                     </div>
                 </div>
@@ -38,8 +38,8 @@ const Navbar = (props) => {
                     <div className="navbar-nav">
                         <div className="navbar-top">
                             <img
-                                alt={props.logoAlt}
-                                src={props.logoSrc}
+                                alt='NFT Bridge Logo'
+                                src={logo}
                                 className="navbar-logo"
                             />
                             <div data-thq="thq-close-menu" className="navbar-close-menu">
@@ -48,13 +48,13 @@ const Navbar = (props) => {
                                 </svg>
                             </div>
                         </div>
-                        <nav className="navbar-links1">
-                            <span className="thq-link thq-body-small">{props.link1}</span>
-                            <span className="thq-link thq-body-small">{props.link2}</span>
-                            <span className="thq-link thq-body-small">{props.link3}</span>
-                            <span className="thq-link thq-body-small">{props.link4}</span>
-                            <span className="thq-link thq-body-small">{props.link5}</span>
-                        </nav>
+                        {/* <nav className="navbar-links1">
+                            <span className="thq-link thq-body-small">Home</span>
+                            <span className="thq-link thq-body-small">Deploy</span>
+                            <span className="thq-link thq-body-small">Mint</span>
+                            <span className="thq-link thq-body-small">Approve</span>
+                            <span className="thq-link thq-body-small">Collection</span>
+                        </nav> */}
                     </div>
                     <div className="navbar-buttons1">
                         <button className="thq-button-filled">Login</button>
@@ -66,28 +66,5 @@ const Navbar = (props) => {
     )
 }
 
-Navbar.defaultProps = {
-    link1: 'Home',
-    link2: 'Deploy',
-    logoSrc: logo,
-    action2: 'Sign Up',
-    logoAlt: 'NFT Bridge Logo',
-    link3: 'Mint',
-    action1: 'Login',
-    link4: 'Approve',
-    link5: 'Collection',
-}
-
-Navbar.propTypes = {
-    link1: PropTypes.string,
-    link5: PropTypes.string,
-    link2: PropTypes.string,
-    logoSrc: PropTypes.string,
-    action2: PropTypes.string,
-    logoAlt: PropTypes.string,
-    link3: PropTypes.string,
-    action1: PropTypes.string,
-    link4: PropTypes.string,
-}
 
 export default Navbar

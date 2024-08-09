@@ -1,13 +1,22 @@
-import React from 'react';
+import React,  { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ConnectWallet from './components/ConnectWallet';
-import NavBar from './components/NavBar';
-
+import Navbar from './components/navbar';
+import Hero from './components/hero';
+import DeploySection from './components/deploysection';
 
 const App = () => {
+    const [account, setAccount] = useState(undefined);
     return (
         <React.StrictMode>
-            <NavBar />
-            <ConnectWallet />
+            <Router>
+                <Navbar account={account} />
+                <Hero />
+                <Routes>
+                    <Route path="/" element={<ConnectWallet />} />
+                    <Route path="/deploy-section" element={<DeploySection setAccount={setAccount} />} />
+                </Routes>
+            </Router>
         </React.StrictMode>
     );
 };
