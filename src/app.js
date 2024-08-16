@@ -6,15 +6,17 @@ import Hero from './components/hero';
 import DeploySection from './components/deploysection';
 
 const App = () => {
-    const [account, setAccount] = useState(undefined);
+    const [account, setAccount] = useState(() => {
+        return localStorage.getItem('account') || undefined;
+    });
     return (
         <React.StrictMode>
             <Router>
                 <Navbar account={account} />
                 <Hero />
                 <Routes>
-                    <Route path="/" element={<ConnectWallet />} />
-                    <Route path="/deploy-section" element={<DeploySection setAccount={setAccount} />} />
+                    <Route exact path="/" element={<ConnectWallet setAccount={setAccount} />} />
+                    <Route exact path="/deploy-section" element={<DeploySection account={account} />} />
                 </Routes>
             </Router>
         </React.StrictMode>

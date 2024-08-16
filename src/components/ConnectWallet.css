@@ -1,4 +1,8 @@
+.container{
+    width: 90vw;
+}
 .cta-accent2-bg {
+    width: 100%;
     gap: var(--dl-space-space-oneandhalfunits);
     display: flex;
     transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(1deg) skew(0deg, 0deg);

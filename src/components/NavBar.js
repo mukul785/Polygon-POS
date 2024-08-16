@@ -21,11 +21,11 @@ const Navbar = ({account}) => {
                         {/* <span className="thq-link thq-body-small">Collection</span> */}
                     </nav>
                     <div className="navbar-buttons">
-                        <button className="navbar-action1 thq-button-animated thq-button-filled">
+                        {/* <button className="navbar-action1 thq-button-animated thq-button-filled">
                             <span className="thq-body-small">Link Wallet</span>
-                        </button>
+                        </button> */}
                         <button className="navbar-action2 thq-button-outline thq-button-animated">
-                            <span className="thq-body-small">{account}</span>
+                            <span className="thq-body-small">{ account === undefined ? 'Wallet Address' : account}</span>
                         </button>
                     </div>
                 </div>
