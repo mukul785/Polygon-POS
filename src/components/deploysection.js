@@ -3,8 +3,7 @@ import './deploysection.css';
 import { ethers } from 'ethers';
 import atm_abi from "../artifacts/contracts/MyNFT.sol/MyNFT.json";
 
-const DeploySection = ({ account }) => {
-    const [contractAddress, setContractAddress] = useState(() => localStorage.getItem('contractAddress') || '');
+const DeploySection = ({ account, contractAddress, setContractAddress }) => {
     const [isContractDeployed, setIsContractDeployed] = useState(!!contractAddress);
     const [isDeploying, setIsDeploying] = useState(false);
 
@@ -49,12 +48,12 @@ const DeploySection = ({ account }) => {
                 </div>
                 <div className="transactions">
                     {!isContractDeployed ? (
-                        <div className="deploy-loader">
+                        <div className="center">
                         <button className="tr_child" onClick={deployContract}><b>Deploy</b></button><br />
                         {isDeploying && !isContractDeployed && (
                             <>
-                            <span class="loader"></span>
-                            <span class="loader-note">Deploying can take 15-20 seconds</span>
+                            <span className="loader"></span>
+                            <span className="loader-note">Deploying can take 15-20 seconds</span>
                             </>
                         )}
                         </div>
