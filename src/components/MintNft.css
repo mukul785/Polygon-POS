@@ -1,0 +1,40 @@
+.mint-main{
+    width: 85vw;
+    height: fit-content;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    padding: 1rem;
+}
+.head{
+    font-size: 2rem;
+    font-weight: 600;
+    font-family: 'Courier New', Courier, monospace;
+}
+.input-area{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    text-align: center;
+}
+.in-div{
+    width: 40%;
+    margin: auto;
+}
+.head-in{
+    font-weight: 500;
+    font-size: 1rem;
+}
+.text-in{
+    background-color: whitesmoke;
+}
+
+@media(max-width: 991px) {
+    
+}
+@media(max-width: 767px) {
+    
+}
