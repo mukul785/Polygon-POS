@@ -35,7 +35,7 @@ const DeploySection = ({ account, contractAddress, setContractAddress }) => {
             setIsContractDeployed(true);
             setIsDeploying(false);
         } catch (error) {
-            alert('Deploying requested rejected:', error);
+            alert('Deploying access rejected', error);
             setIsDeploying(false);
         }
     };

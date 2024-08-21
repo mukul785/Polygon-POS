@@ -4,7 +4,7 @@ import ConnectWallet from './components/ConnectWallet';
 import Navbar from './components/navbar';
 import Hero from './components/hero';
 import DeploySection from './components/deploysection';
-import MintNft from './components/MintNFT';
+// import MintNft from './components/MintNft';
 import Steps from './components/Steps';
 import References from './components/References';
 
@@ -22,9 +22,9 @@ const App = () => {
                     <Route path="/" element={<ConnectWallet setAccount={setAccount} />} />
                     <Route path="/deploy-section" element={<DeploySection account={account} contractAddress={contractAddress} setContractAddress={setContractAddress} />} />
                 </Routes>
-                {contractAddress!='' && (
+                {/* {contractAddress!='' && (
                     <MintNft account={account} contractAddress={contractAddress} />
-                )}
+                )} */}
                 <Steps />
                 <References />
             </Router>

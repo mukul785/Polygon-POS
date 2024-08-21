@@ -1,7 +1,7 @@
 .mint-main{
     width: 85vw;
     height: fit-content;
-    margin: auto;
+    margin: 10vh auto 2vh auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -13,12 +13,14 @@
     font-size: 2rem;
     font-weight: 600;
     font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 1rem;
 }
 .input-area{
     width: 90%;
     margin: auto;
     display: flex;
     text-align: center;
+    margin-bottom: 1rem;
 }
 .in-div{
     width: 40%;
@@ -27,14 +29,35 @@
 .head-in{
     font-weight: 500;
     font-size: 1rem;
+    margin: 0.25rem;
 }
 .text-in{
-    background-color: whitesmoke;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
+    margin: 0.25rem;
+    height: 2rem;
+}
+.text-in::placeholder{
+    padding: 0.25rem;
+    color: rgba(0, 0, 0, 0.5);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+}
+.mint-btn{
+    background-color: var(--dl-color-theme-primary2);
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 0.25rem 1rem;
+    border-radius: 5px;
+    margin-bottom: 2rem;
 }
 
-@media(max-width: 991px) {
-    
-}
 @media(max-width: 767px) {
-    
+    .input-area{
+        display: block;
+    }
+    .in-div{
+        margin: 2rem auto;
+    }
 }

@@ -6,7 +6,7 @@ const tokenABI = tokenContractJSON.abi;
 const walletAddress = "0xd8B5318B4BD5a706118b35819ED16759B7729941";
 
 async function main() {
-  const nft = await ethers.getContractAt("MyNFT", "0x22c155174cd7aAa30A628a8fF2950eDC3bFeaE67");
+  const nft = await ethers.getContractAt(tokenABI, "0x22c155174cd7aAa30A628a8fF2950eDC3bFeaE67");
   const tokenURIs = [
     "ipfs://QmYuHLH4iHDsSUDBBijyLtD6WiXAhS6CkprVfmPbzYKKCZ",
     "ipfs://QmPjYHrzoqdwSSEyv93kzCttzHAtLFCM4yFdiguKbdoKPQ",
@@ -24,7 +24,7 @@ async function main() {
   ];
 
   for (let i = 0; i < tokenURIs.length; i++) {
-    await nft.mintNFT(tokenURIs[i], prompts[i]);
+    await nft.mintNFT(walletAddress, tokenURIs[i], prompts[i]);
     console.log(`Minted NFT with ID ${i} to owner with prompt: ${prompts[i]}`);
   }
 }
